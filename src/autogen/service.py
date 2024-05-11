@@ -2,6 +2,7 @@ import os
 
 import autogen
 
+from src import USE_DOCKER_CODE_EXECUTOR
 from src.autogen.agents.AssistantAgentService import AssistantAgentService
 from src.autogen.agents.CodeExecutorAgentService import CodeExecutorAgentService
 from src.autogen.agents.CodeWriterAgentService import CodeWriterAgentService
@@ -17,6 +18,10 @@ class AutogenAiService:
             'code_executor_agent': code_executor_agent_service.get_agent(model=model)
         }
         self.ai_model_name = model
+
+    def stop_executor(self):
+        if USE_DOCKER_CODE_EXECUTOR:
+            self._code_executor.stop()
 
     def _get_custom_chats_state_transition(self, last_speaker, chats_group):
         messages = chats_group.messages
@@ -43,7 +48,7 @@ class AutogenAiService:
             if messages[-1]["content"] == "exitcode: 1":
                 return code_writer_agent
             else:
-                self._code_executor.stop()
+                self.stop_executor()
                 return None
 
     def _create_chat_group(self, model: str, max_chat_rounds: int = 5) -> autogen.GroupChatManager:

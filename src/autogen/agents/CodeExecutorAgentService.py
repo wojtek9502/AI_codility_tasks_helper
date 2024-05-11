@@ -1,7 +1,9 @@
-import autogen
-from autogen.coding import DockerCommandLineCodeExecutor
+import os
 
-from src import AI_CODE_DIR_PATH
+import autogen
+from autogen.coding import DockerCommandLineCodeExecutor, LocalCommandLineCodeExecutor
+
+from src import AI_CODE_DIR_PATH, USE_DOCKER_CODE_EXECUTOR
 from src.autogen.agents.AgentAbstract import AgentAbstract
 
 
@@ -12,11 +14,17 @@ class CodeExecutorAgentService(AgentAbstract):
     @staticmethod
     def _get_executor():
         # execute code created by chat inside container. Better security
-        executor = DockerCommandLineCodeExecutor(
-            image="python:3.12-slim",  # Execute code using the given docker image name.
-            timeout=10,  # Timeout for each code execution in seconds.
-            work_dir=AI_CODE_DIR_PATH,  # Use the temporary directory to store the code files.
-        )
+        if USE_DOCKER_CODE_EXECUTOR:
+            executor = DockerCommandLineCodeExecutor(
+                image="python:3.12-slim",  # Execute code using the given docker image name.
+                timeout=10,  # Timeout for each code execution in seconds.
+                work_dir=AI_CODE_DIR_PATH,  # Use the temporary directory to store the code files.
+            )
+        else:
+            executor = LocalCommandLineCodeExecutor(
+                timeout=10,
+                work_dir=AI_CODE_DIR_PATH
+            )
         return executor
 
     def get_agent(self, model: str) -> autogen.ConversableAgent:
