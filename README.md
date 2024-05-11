@@ -24,7 +24,10 @@ WebUI created using Streamlit: https://streamlit.io/
 Microsoft Autogen: https://microsoft.github.io/autogen/docs/Getting-Started/ 
 
 Sample task: https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
-![img.png](screen1.png)
+
+WebUI Screen:
+
+<img src="screen1.png" width="60%">
 
 ### Requirements
 - Python 3.10+
