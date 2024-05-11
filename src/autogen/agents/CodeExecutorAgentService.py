@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import autogen
 from autogen.coding import DockerCommandLineCodeExecutor
 
@@ -11,7 +9,8 @@ class CodeExecutorAgentService(AgentAbstract):
     def __init__(self):
         self.executor = self._get_executor()
 
-    def _get_executor(self):
+    @staticmethod
+    def _get_executor():
         # execute code created by chat inside container. Better security
         executor = DockerCommandLineCodeExecutor(
             image="python:3.12-slim",  # Execute code using the given docker image name.
