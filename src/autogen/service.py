@@ -9,7 +9,10 @@ from src.autogen.agents.CodeWriterAgentService import CodeWriterAgentService
 
 
 class AutogenAiService:
-    def __init__(self, model: str = 'gpt-3.5-turbo'):
+    def __init__(self, model: str = None):
+        if not model:
+            model = os.environ['OPENAI_MODEL']
+
         code_executor_agent_service = CodeExecutorAgentService()
         self._code_executor = code_executor_agent_service.executor
         self._agents_map = {
