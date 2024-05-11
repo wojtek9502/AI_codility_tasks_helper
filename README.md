@@ -90,7 +90,7 @@ USE_DOCKER_CODE_EXECUTOR=1    # When you run this from source, execute code gene
 ```
 3) Run WebUI
 ```shell
-python run-web
+make run-web
 ````
 4) Go to http://127.0.0.1:8501
 
