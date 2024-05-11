@@ -1,4 +1,4 @@
-## AI + Autogen Codility tasks helper
+# AI + Autogen Codility tasks helper
 
 A tool created to automate Codility tasks. Solve tasks using AI + Microsoft Autogen. Tested with GPT-3.5
 
@@ -6,12 +6,19 @@ The tool generates code with use ChatGPT, next generated code is executed in sep
 If there are no errors, AI response is returned.  
 If there is an error then tool generates code again (2 tries).
 
-### Requirements
+- [Requirements](#requirements)
+- [Details](#details)
+- [Run](#run)
+  - [Run as docker container](#run-as-docker-container)
+  - [Run from source](#run-from-source)
+
+
+## Requirements
 - Python 3.10+
 - Docker >=  24.0.5
 - docker-compose >= 2.23.3
 
-### Details
+## Details
 
 There are 3 agents:
 
@@ -32,8 +39,8 @@ Microsoft Autogen: https://microsoft.github.io/autogen/docs/Getting-Started/
 
 Sample task: https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
 
-WebUI Screen:
 
+WebUI Screen:
 <img src="screen1.png" width="60%">
 
 ## Run
@@ -70,7 +77,6 @@ docker compose up --build
 
 
 ### Run from source
-#### Install and run
 1) Install venv and activate:
 ```shell
 python -m pip install virtualenv
@@ -88,3 +94,4 @@ USE_DOCKER_CODE_EXECUTOR=1    # When you run this from source, execute code gene
 make recreate
 ````
 4) Go to http://127.0.0.1:8080
+
