@@ -23,7 +23,7 @@ def gen_button_submit():
 def main_loop():
     set_session_vars()
 
-    st.title('AI Autogen Codility tasks resolver')
+    st.title('AI + Autogen Codility tasks helper')
 
     st.text_area('Codility task here', value='', height=300, max_chars=None, key='task_input_key')
     st.button('Generate code', on_click=gen_button_submit)
