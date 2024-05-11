@@ -8,9 +8,8 @@ up:
 down:
 	docker compose down
 
-rebuild:
-    docker-compose build
-    docker compose up -d --force-recreate
+run-web:
+	$(python) run_webgui.py
 
 uninstall-unrequired-libraries:
 	$(pip) freeze | grep -v -f requirements.txt - | grep -v '^#' | xargs $(pip) uninstall -y || echo "OK, you dont have any unrequired libraries"
