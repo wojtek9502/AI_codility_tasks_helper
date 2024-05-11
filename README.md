@@ -35,12 +35,10 @@ Agents flow:
 
 Dockerhub image: https://hub.docker.com/repository/docker/wojtek9502/autogen-codility-tasks  
 WebUI created using Streamlit: https://streamlit.io/  
-Microsoft Autogen: https://microsoft.github.io/autogen/docs/Getting-Started/ 
-
-Sample task: https://app.codility.com/programmers/lessons/15-caterpillar_method/count_triangles/
-
+Microsoft Autogen: https://microsoft.github.io/autogen/docs/Getting-Started/
 
 WebUI Screen:
+
 <img src="screen1.png" width="60%">
 
 ## Run
