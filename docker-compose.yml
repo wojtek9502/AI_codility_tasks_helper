@@ -1,0 +1,9 @@
+version: '3.6'
+services:
+  webgui:
+    build: .
+    command: ['python', 'run_webgui.py']
+    env_file:
+      - .env
+    ports:
+      - '8080:8501'
